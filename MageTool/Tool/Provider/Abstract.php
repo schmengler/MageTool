@@ -48,9 +48,8 @@ abstract class MageTool_Tool_Provider_Abstract
         //load Magento
         $mageFilename = 'app/Mage.php';
         $this->_isInstalled($mageFilename);
-        require_once $mageFilename;
-        Mage::app();
     }
+    
     /**
      * Find the mage file and confirm Magento is installed
      *

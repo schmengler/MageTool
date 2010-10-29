@@ -15,6 +15,20 @@ class MageTool_Tool_MageExtension_Provider_Extension extends MageTool_Tool_MageE
     implements Zend_Tool_Framework_Provider_Pretendable
 {
     /**
+     * The vendor name under which the module should be created
+     *
+     * @var string
+     **/
+    protected $vendor;
+    
+    /**
+     * The name of the module to be created
+     *
+     * @var string
+     **/
+    protected $name;
+    
+    /**
      * Define the name of the provider
      *
      * @return string
@@ -36,6 +50,9 @@ class MageTool_Tool_MageExtension_Provider_Extension extends MageTool_Tool_MageE
         $this->_bootstrap();
         $this->_chApplicationDir();
         $path = getcwd();
+        
+        $this->vendor = $vendor;
+        $this->name = $name;
         
         $path = sprintf("%s/app/code/%s/%s/%s", $path, $pool, $vendor, $name);
 
@@ -87,20 +104,19 @@ class MageTool_Tool_MageExtension_Provider_Extension extends MageTool_Tool_MageE
     {
         $data = <<<EOS
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml version="1.0" encoding="UTF-8"?>
-<extensionProfile type="default" version="1.10">
-    <extensionDirectory>
+<extensionProfile type="default" version="0.1">
+    <moduleDirectory moduleName="{$this->name}">
         <BlockDirectory></BlockDirectory>
         <ControllerDirectory></ControllerDirectory>
-        <controllersDirectory></controllersDirectory>
+        <ControllersDirectory></ControllersDirectory>
         <etcDirectory>
             <file filesystemName="config.xaml" defaultContentCallback="MageTool_Tool_MageExtension_Provider_Extension::getDefaultConfigContents"/>
             <file filesystemName="system.xaml" defaultContentCallback="MageTool_Tool_MageExtension_Provider_Extension::getDefaultSystemContents"/>
         </etcDirectory>
-        <HelperDiroectory></HelperDiroectory>
+        <HelperDirectory></HelperDirectory>
         <ModelDirectory></ModelDirectory>
         <sqlDirectory></sqlDirectory>
-    </extensionDirectory>
+    </moduleDirectory>
 </extensionProfile>
 EOS;
         return $data;
@@ -114,21 +130,52 @@ EOS;
 <?xml version="1.0"?>
 <config>
     <modules>
-        <{$vendor}_{$name}>
+        <{$this->vendor}_{$this->name}>
              <version>0.0.1</version>
-        </{$vendor}_{$name}>
+        </{$this->vendor}_{$this->name}>
     </modules>
 
     <global>
         <models>
         </models>
         <blocks>
-            <{$name}>
-            </{$name}>
+            <{$this->name}>
+            </{$this->name}>
         </blocks>
         <helpers>
-            <{$name}>
-            </{$name}>
+            <{$this->name}>
+            </{$this->name}>
+        </helpers>
+    </global>
+    <default>
+    </default>
+</config>
+EOS;
+    }
+    
+    public static function getDefaultSystemContents($caller = null)
+    {
+        $projectDirResource = $caller->getResource()->getProfile()->search('projectDirectory');
+        
+        return <<< EOS
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <{$this->vendor}_{$this->name}>
+             <version>0.0.1</version>
+        </{$this->vendor}_{$this->name}>
+    </modules>
+
+    <global>
+        <models>
+        </models>
+        <blocks>
+            <{$this->name}>
+            </{$this->name}>
+        </blocks>
+        <helpers>
+            <{$this->name}>
+            </{$this->name}>
         </helpers>
     </global>
     <default>

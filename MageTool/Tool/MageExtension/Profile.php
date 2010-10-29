@@ -1,5 +1,5 @@
 <?php
-
+require_once 'MageTool/Tool/MageExtension/Profile/FileParser/Xml.php';
 /**
  * @see Zend_Tool_Project_Profile_FileParser_Xml
  */
@@ -35,7 +35,7 @@ class MageTool_Tool_MageExtension_Profile extends Zend_Tool_Project_Profile
             throw new Zend_Tool_Project_Exception('loadFromData() must have "profileData" set.');
         }
 
-        $profileFileParser = new Zend_Tool_Project_Profile_FileParser_Xml();
+        $profileFileParser = new MageTool_Tool_MageExtension_Profile_FileParser_Xml();
         $profileFileParser->unserialize($this->_attributes['profileData'], $this);
 
         $this->rewind();
