@@ -111,7 +111,7 @@ Added the extension tasks.
    <package>
     <name>zf</name>
     <channel>pear.zfcampus.org</channel>
-    <min>1.10.8</min>
+    <min>1.11.0</min>
    </package>
   </required>
  </dependencies>
