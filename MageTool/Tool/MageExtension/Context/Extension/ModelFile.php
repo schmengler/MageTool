@@ -1,18 +1,13 @@
 <?php
 
-class MageTool_Tool_MageExtension_Context_Extension_HelperFile extends Zend_Tool_Project_Context_Filesystem_File
+class MageTool_Tool_MageExtension_Context_Extension_ModelFile extends Zend_Tool_Project_Context_Filesystem_File
 {
 
     /**
      * @var string
      */
-    protected $_helperName = 'Data';
+    protected $_modelName = 'Data';
 
-    /**
-     * @var string
-     */
-    protected $_moduleName = null;
-    
     /**
      * @var string
      */
@@ -24,8 +19,8 @@ class MageTool_Tool_MageExtension_Context_Extension_HelperFile extends Zend_Tool
      */
     public function init()
     {
-        $this->_helperName = $this->_resource->getAttribute('helperName');
-        $this->_filesystemName = ucfirst($this->_helperName) . '.php';
+        $this->_modelName = $this->_resource->getAttribute('modelName');
+        $this->_filesystemName = ucfirst($this->_modelName) . '.php';
         parent::init();
     }
 
@@ -37,7 +32,7 @@ class MageTool_Tool_MageExtension_Context_Extension_HelperFile extends Zend_Tool
     public function getPersistentAttributes()
     {
         return array(
-            'helperName' => $this->getHelperName()
+            'modelName' => $this->getModelName()
             );
     }
 
@@ -48,7 +43,7 @@ class MageTool_Tool_MageExtension_Context_Extension_HelperFile extends Zend_Tool
      */
     public function getName()
     {
-        return 'HelperFile';
+        return 'ModelFile';
     }
 
     /**
@@ -56,9 +51,9 @@ class MageTool_Tool_MageExtension_Context_Extension_HelperFile extends Zend_Tool
      *
      * @return string
      */
-    public function getHelperName()
+    public function getModelName()
     {
-        return $this->_helperName;
+        return $this->_modelName;
     }
 
     /**
@@ -72,14 +67,14 @@ class MageTool_Tool_MageExtension_Context_Extension_HelperFile extends Zend_Tool
         $vendor = $profile->getAttribute('vendor');
         $name = $profile->getAttribute('name');
         
-        $className = sprintf('%s_%s_Helper_%s', $vendor, $name, ucfirst($this->_helperName));
+        $className = sprintf('%s_%s_Model_%s', $vendor, $name, ucfirst($this->_modelName));
         
         $codeGenFile = new Zend_CodeGenerator_Php_File(array(
             'fileName' => $this->getPath(),
             'classes' => array(
                 new Zend_CodeGenerator_Php_Class(array(
                     'name' => $className,
-                    'extendedClass' => 'Mage_Core_Helper_Abstract',
+                    'extendedClass' => 'Mage_Core_Model_Abstract',
                     'methods' => array()
                 	))
             	)
