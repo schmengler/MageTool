@@ -21,7 +21,7 @@ class MageTool_Tool_MageExtension_Context_Extension_BlockDirectory extends Zend_
      */
     public function getName()
     {
-        return 'ModelsDirectory';
+        return 'BlockDirectory';
     }
 
 }
