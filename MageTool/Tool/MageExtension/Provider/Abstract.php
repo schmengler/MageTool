@@ -15,14 +15,14 @@ require_once 'Zend/Tool/Project/Provider/Abstract.php';
  **/
 abstract class MageTool_Tool_MageExtension_Provider_Abstract extends Zend_Tool_Project_Provider_Abstract
 {
-    public function __construct()
+    public function initialize()
     {
         $contextRegistry = Zend_Tool_Project_Context_Repository::getInstance();
         $contextRegistry->addContextsFromDirectory(
             dirname(dirname(__FILE__)) . '/Context/Extension/', 'MageTool_Tool_MageExtension_Context_Extension_'
         );
         
-        parent::__construct();
+        parent::initialize();
     }
     
     /**
