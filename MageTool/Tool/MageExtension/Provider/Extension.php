@@ -1,10 +1,10 @@
 <?php
-
+require_once 'MageTool/Tool/MageExtension/Profile.php';
 /**
  * @see MageTool_Tool_MageExtension_Provider_Abstract
  */
 require_once 'MageTool/Tool/MageExtension/Provider/Abstract.php';
-
+require_once 'MageTool/Tool/MageExtension/Provider/Exception.php';
 /**
  * undocumented class
  *
@@ -14,6 +14,27 @@ require_once 'MageTool/Tool/MageExtension/Provider/Abstract.php';
 class MageTool_Tool_MageExtension_Provider_Extension extends MageTool_Tool_MageExtension_Provider_Abstract
     implements Zend_Tool_Framework_Provider_Pretendable
 {
+    /**
+     * The vendor name under which the module should be created
+     *
+     * @var string
+     **/
+    protected $vendor;
+    
+    /**
+     * The name of the module to be created
+     *
+     * @var string
+     **/
+    protected $name;
+    
+    /**
+     * The code pool into which the module should be placed
+     *
+     * @var string
+     **/
+    protected $pool;
+    
     /**
      * Define the name of the provider
      *
@@ -31,8 +52,114 @@ class MageTool_Tool_MageExtension_Provider_Extension extends MageTool_Tool_MageE
      * @return void
      * @author Alistair Stead
      **/
-    public function create($codePool, $vendorName, $extensionName)
+    public function create($vendor, $name, $pool = 'local', $fileOfProfile = null)
     {
-        echo "Create extension";
+        $this->_bootstrap();
+        $this->_chApplicationDir();
+        $path = getcwd();
+        
+        $this->vendor = ucfirst($vendor);
+        $this->name = ucfirst($name);
+        $this->pool = strtolower($pool);
+        
+        $path = sprintf("%s/app/code/%s/%s/%s", $path, $this->pool, $this->vendor, $this->name);
+
+        if (file_exists($path)) {
+            throw new MageTool_Tool_MageExtension_Provider_Exception(
+                "An Extension {$this->name} already exists in the {$this->pool} code pool for the vendor {$this->vendor}."
+                );
+        } else {
+            try {
+                mkdir($path, 0755, true);
+            } catch (Exception $e) {
+                throw new MageTool_Tool_MageExtension_Provider_Exception(
+                    "Unable to create Extension {$this->name} directory."
+                    );
+            }
+        }
+
+        $profileData = null;
+
+        if ($fileOfProfile != null && file_exists($fileOfProfile)) {
+            $profileData = file_get_contents($fileOfProfile);
+        }
+
+        if ($profileData == '') {
+            $profileData = $this->_getDefaultProfile();
+        }
+
+        $newProfile = new MageTool_Tool_MageExtension_Profile(array(
+            'projectDirectory' => $path,
+            'profileData' => $profileData,
+            'vendor' => $this->vendor,
+            'name' => $this->name,
+            'pool' => $this->pool
+            ));
+
+        $newProfile->loadFromData();
+
+        $response = $this->_registry->getResponse();
+        
+        $response->appendContent('Created extension at ' . $path, array('color' => 'green'));
+        $response->appendContent('Note: ', array('separator' => true, 'color' => 'yellow'));
+        $response->appendContent(
+            'This command created a new extension, '
+            . 'you will now need to create a config file to enable this module in app/etc/modules');
+        $response->appendContent('Example: ', array('separator' => true, 'color' => 'yellow'));
+        $xmlExample = <<< EOS
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <{$this->vendor}_{$this->name}>
+             <active>true</active>
+             <codePool>{$this->pool}</codePool>
+             <depends>
+             </depends>
+        </{$this->vendor}_{$this->name}>
+    </modules>
+</config>
+EOS;
+        $response->appendContent($xmlExample);
+
+        foreach ($newProfile->getIterator() as $resource) {
+            $resource->create();
+        }
+    }
+    
+    protected function _getDefaultProfile()
+    {
+        $data = <<<EOS
+<?xml version="1.0" encoding="UTF-8"?>
+<extensionProfile type="default" version="0.1">
+    <ExtensionDirectory>
+        <BlockDirectory></BlockDirectory>
+        <ControllerDirectory></ControllerDirectory>
+        <ControllersDirectory></ControllersDirectory>
+        <etcDirectory>
+            <ConfigFile/>
+            <SystemFile/>
+            <AdminhtmlFile/>
+            <ApiFile/>
+            <WsdlFile/>
+        </etcDirectory>
+        <HelperDirectory>
+            <HelperFile name="Data"/>
+        </HelperDirectory>
+        <ModelDirectory>
+            <ModelFile name="{$this->name}"/>
+            <ObserverFile name="Observer"/>
+            <EntityDirectory>
+                <SetupFile/>
+            </EntityDirectory>
+        </ModelDirectory>
+        <sqlDirectory>
+            <SetupDirectory>
+                <InstallFile version="0.1.0"/>
+            </SetupDirectory>
+        </sqlDirectory>
+    </ExtensionDirectory>
+</extensionProfile>
+EOS;
+        return $data;
     }
 }
