@@ -19,7 +19,7 @@ abstract class MageTool_Tool_MageExtension_Context_Extension_AbstractFile extend
      */
     public function init()
     {
-        $this->_className = $this->_resource->getAttribute('name');
+        $this->_className = ($this->_resource->getAttribute('name'))? $this->_resource->getAttribute('name') : $this->_filesystemName;
         $this->_filesystemName = ucfirst($this->_className) . '.php';
         parent::init();
     }
