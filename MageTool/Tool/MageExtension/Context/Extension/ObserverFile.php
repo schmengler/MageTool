@@ -1,6 +1,6 @@
 <?php
 
-class MageTool_Tool_MageExtension_Context_Extension_ModelFile extends MageTool_Tool_MageExtension_Context_Extension_AbstractFile
+class MageTool_Tool_MageExtension_Context_Extension_ObserverFile extends MageTool_Tool_MageExtension_Context_Extension_AbstractFile
 {
     /**
      * getName()
@@ -9,9 +9,9 @@ class MageTool_Tool_MageExtension_Context_Extension_ModelFile extends MageTool_T
      */
     public function getName()
     {
-        return 'ModelFile';
+        return 'ObserverFile';
     }
-    
+
     /**
      * class path template
      *
@@ -31,6 +31,6 @@ class MageTool_Tool_MageExtension_Context_Extension_ModelFile extends MageTool_T
      **/
     public function getExtends()
     {
-        return 'Mage_Core_Model_Abstract';
+        return '';
     }
 }

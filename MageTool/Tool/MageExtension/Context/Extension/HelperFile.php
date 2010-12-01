@@ -1,46 +1,7 @@
 <?php
 
-class MageTool_Tool_MageExtension_Context_Extension_HelperFile extends Zend_Tool_Project_Context_Filesystem_File
+class MageTool_Tool_MageExtension_Context_Extension_HelperFile extends MageTool_Tool_MageExtension_Context_Extension_AbstractFile
 {
-
-    /**
-     * @var string
-     */
-    protected $_helperName = 'Data';
-
-    /**
-     * @var string
-     */
-    protected $_moduleName = null;
-    
-    /**
-     * @var string
-     */
-    protected $_filesystemName = 'helperName';
-
-    /**
-     * init()
-     *
-     */
-    public function init()
-    {
-        $this->_helperName = $this->_resource->getAttribute('helperName');
-        $this->_filesystemName = ucfirst($this->_helperName) . '.php';
-        parent::init();
-    }
-
-    /**
-     * getPersistentAttributes
-     *
-     * @return array
-     */
-    public function getPersistentAttributes()
-    {
-        return array(
-            'helperName' => $this->getHelperName()
-            );
-    }
-
     /**
      * getName()
      *
@@ -50,43 +11,26 @@ class MageTool_Tool_MageExtension_Context_Extension_HelperFile extends Zend_Tool
     {
         return 'HelperFile';
     }
-
+    
     /**
-     * getHelperName()
+     * class path template
      *
      * @return string
-     */
-    public function getHelperName()
+     * @author Alistair Stead
+     **/
+    public function getClassPath()
     {
-        return $this->_helperName;
+        return '%s_%s_Helper_%s';
     }
-
+    
     /**
-     * getContents()
+     * Return the name of the class to extend
      *
      * @return string
-     */
-    public function getContents()
+     * @author Alistair Stead
+     **/
+    public function getExtends()
     {
-        $profile = $this->_resource->getProfile();
-        $vendor = $profile->getAttribute('vendor');
-        $name = $profile->getAttribute('name');
-        
-        $className = sprintf('%s_%s_Helper_%s', $vendor, $name, ucfirst($this->_helperName));
-        
-        $codeGenFile = new Zend_CodeGenerator_Php_File(array(
-            'fileName' => $this->getPath(),
-            'classes' => array(
-                new Zend_CodeGenerator_Php_Class(array(
-                    'name' => $className,
-                    'extendedClass' => 'Mage_Core_Helper_Abstract',
-                    'methods' => array()
-                	))
-            	)
-        	));
-
-        // store the generator into the registry so that the addAction command can use the same object later
-        Zend_CodeGenerator_Php_File::registerFileCodeGenerator($codeGenFile); // REQUIRES filename to be set
-        return $codeGenFile->generate();
+        return 'Mage_Core_Helper_Abstract';
     }
 }
