@@ -1,11 +1,15 @@
 <?php
 
-
+require_once 'MageTool/Tool/Provider/Exception.php';
 /**
  * @see Zend_Tool_Framework_Provider_Interface
  */
 require_once 'Zend/Tool/Framework/Provider/Interface.php';
-require_once 'Zend/Tool/Project/Provider/Abstract.php';
+
+/**
+ * @see Zend_Tool_Framework_Registry_EnabledInterface
+ */
+require_once 'Zend/Tool/Framework/Registry/EnabledInterface.php';
 
 /**
  * undocumented class
@@ -13,16 +17,24 @@ require_once 'Zend/Tool/Project/Provider/Abstract.php';
  * @package default
  * @author Alistair Stead
  **/
-abstract class MageTool_Tool_MageExtension_Provider_Abstract extends Zend_Tool_Project_Provider_Abstract
+abstract class MageTool_Tool_Provider_Abstract 
+    implements Zend_Tool_Framework_Provider_Interface, Zend_Tool_Framework_Registry_EnabledInterface
 {
-    public function initialize()
+    /**
+     * @var Zend_Tool_Framework_Registry_Interface
+     */
+    protected $_registry = null;
+
+    /**
+     * setRegistry() - required by Zend_Tool_Framework_Registry_EnabledInterface
+     *
+     * @param Zend_Tool_Framework_Registry_Interface $registry
+     * @return Zend_Tool_Framework_Provider_Abstract
+     */
+    public function setRegistry(Zend_Tool_Framework_Registry_Interface $registry)
     {
-        $contextRegistry = Zend_Tool_Project_Context_Repository::getInstance();
-        $contextRegistry->addContextsFromDirectory(
-            dirname(dirname(__FILE__)) . '/Context/Extension/', 'MageTool_Tool_MageExtension_Context_Extension_'
-        );
-        
-        parent::initialize();
+        $this->_registry = $registry;
+        return $this;
     }
     
     /**

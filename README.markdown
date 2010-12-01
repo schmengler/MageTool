@@ -119,7 +119,7 @@ Response:
 	    zf version mage-app
 
 	  MageExtension
-	    zf create mage-extension code-pool vendor-name extension-name
+	    zf create mage-extension vendor name pool[=local] file-of-profile
 	
 ## Example Usage ##
 
