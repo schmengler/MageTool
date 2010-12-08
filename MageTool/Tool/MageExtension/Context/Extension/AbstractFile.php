@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @see Zend_Tool_Project_Context_Filesystem_File
+ */
+require_once 'Zend/Tool/Project/Context/Filesystem/File.php';
+
 abstract class MageTool_Tool_MageExtension_Context_Extension_AbstractFile extends Zend_Tool_Project_Context_Filesystem_File
 {
 
