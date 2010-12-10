@@ -19,6 +19,7 @@ class MageTool_Tool_MageApp_Provider_Manifest
         $providers = array(
             new MageTool_Tool_MageApp_Provider_Admin_User(),
             new MageTool_Tool_MageApp_Provider_Core_Cache(),
+            new MageTool_Tool_MageApp_Provider_Core_Compiler(),
             new MageTool_Tool_MageApp_Provider_Core_Resource(),
             new MageTool_Tool_MageApp_Provider_Core_Config(),
             new MageTool_Tool_MageApp_Provider_App(),
