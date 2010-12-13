@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @see MageTool_Tool_MageExtension_Context_Extension_AbstractFile
+ */
+require_once 'MageTool/Tool/MageExtension/Context/Extension/AbstractFile.php';
+
 class MageTool_Tool_MageExtension_Context_Extension_ObserverFile extends MageTool_Tool_MageExtension_Context_Extension_AbstractFile
 {
     /**
