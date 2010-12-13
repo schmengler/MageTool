@@ -2,6 +2,7 @@
 
 require_once 'MageTool/Tool/MageApp/Provider/Admin/User.php';
 require_once 'MageTool/Tool/MageApp/Provider/Core/Cache.php';
+require_once 'MageTool/Tool/MageApp/Provider/Core/Compiler.php';
 require_once 'MageTool/Tool/MageApp/Provider/Core/Resource.php';
 require_once 'MageTool/Tool/MageApp/Provider/Core/Config.php';
 require_once 'MageTool/Tool/MageApp/Provider/App.php';
