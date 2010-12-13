@@ -16,11 +16,11 @@
   <email>tonigrigoriu@php.net</email>
   <active>yes</active>
  </contributor>
- <date>2010-12-08</date>
- <time>12:37:41</time>
+ <date>2010-12-13</date>
+ <time>20:16:14</time>
  <version>
-  <release>0.1.1</release>
-  <api>0.1.0</api>
+  <release>0.2.0</release>
+  <api>0.2.0</api>
  </version>
  <stability>
   <release>beta</release>
@@ -28,7 +28,8 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/mit-license.php">MIT</license>
  <notes>
-Added the extension tasks.
+Added new functionality to run the Magento compiler on the cmd line. You 
+Can also enable and disable the use of the compiled source.
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -44,7 +45,7 @@ Added the extension tasks.
    <file baseinstalldir="/" md5sum="f5a2e62ff0818806bba33b31a2f07c85" name="MageTool/Tool/MageApp/Provider/Exception.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
-   <file baseinstalldir="/" md5sum="439e47ccbebf9b71a04044f7b0281d86" name="MageTool/Tool/MageApp/Provider/Manifest.php" role="php">
+   <file baseinstalldir="/" md5sum="b3a81227d729abf014136d8e8c9fd098" name="MageTool/Tool/MageApp/Provider/Manifest.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
    <file baseinstalldir="/" md5sum="a19a14e22f68fd21976ccaeabee4ae01" name="MageTool/Tool/MageApp/Provider/Admin/User.php" role="php">
@@ -53,6 +54,7 @@ Added the extension tasks.
    <file baseinstalldir="/" md5sum="031e141567336d927c0dee7c80859b9b" name="MageTool/Tool/MageApp/Provider/Core/Cache.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
+   <file baseinstalldir="/" md5sum="a65c70c564945c8f457763f84ca031c2" name="MageTool/Tool/MageApp/Provider/Core/Compiler.php" role="php" />
    <file baseinstalldir="/" md5sum="7da2b7165a019451438fbc9a9b7a0633" name="MageTool/Tool/MageApp/Provider/Core/Config.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
@@ -153,6 +155,22 @@ Added the extension tasks.
    <license uri="http://www.opensource.org/licenses/mit-license.php">MIT</license>
    <notes>
 Added the extension tasks.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.2.0</release>
+    <api>0.2.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2010-12-13</date>
+   <license uri="http://www.opensource.org/licenses/mit-license.php">MIT</license>
+   <notes>
+Added new functionality to run the Magento compiler on the cmd line. You 
+Can also enable and disable the use of the compiled source.
    </notes>
   </release>
  </changelog>
