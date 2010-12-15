@@ -6,9 +6,10 @@
 require_once 'MageTool/Tool/MageApp/Provider/Abstract.php';
 
 /**
- * undocumented class
+ * MageTool_Tool_MageApp_Provider_Core_Indexer commands that can be used to build
+ * the magento flat table indexes.
  *
- * @package default
+ * @package MageTool_MageApp_Providor_Core
  * @author Alistair Stead
  **/
 class MageTool_Tool_MageApp_Provider_Core_Indexer extends MageTool_Tool_MageApp_Provider_Abstract
@@ -33,22 +34,120 @@ class MageTool_Tool_MageApp_Provider_Core_Indexer extends MageTool_Tool_MageApp_
      **/
     public function info($code = 'all')
     {
-        $this->_bootstrap();
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
-        
+        $this->_bootstrap(); 
         $processes = $this->_parseIndexerString($code);
         foreach ($processes as $process) {
             /* @var $process Mage_Index_Model_Process */
             $output = sprintf('%-30s', $process->getIndexerCode());
             $output .= $process->getIndexer()->getName();
+            $output .= $this->_cleanStatus($process->getStatus());
+            $output .= $this->_cleanMode($process->getMode());
             $response->appendContent(
                 $output,
                 array('color' => array('white'))
                 );
             
         }
+    }
+    
+    /**
+     * Update the mode of the index processor
+     *
+     * @return void
+     * @author Alistair Stead
+     **/
+    public function mode($mode, $code = 'all')
+    {
+        $this->_bootstrap();   
+        $processes = $this->_parseIndexerString($code);
+        if ($mode != Mage_Index_Model_Process::MODE_REAL_TIME || $mode != Mage_Index_Model_Process::MODE_MANUAL) {
+            throw new Exception("Unsupported mode value supplied. {$mode}");
+        }
+        foreach ($processes as $process) {
+            $process->setMode($mode)->save();
+            $this->response->appendContent(
+                sprintf(
+                    "%s index was successfully changed index mode to %s",
+                    $process->getIndexer()->getName(),
+                    $this->_cleanMode($process->getMode())
+                ),
+                array('color' => array('green'))
+            );
+            
+        }
+    }
+    
+    /**
+     * Run the indexer and build the flat table indexes for Magento
+     *
+     * @param string $code 
+     * @return void
+     * @author Alistair Stead
+     */
+    public function run($code = 'all') {
+        $this->_bootstrap();   
+        $processes = $this->_parseIndexerString($code);
+        
+        foreach ($processes as $process) {
+            // TODO this process needs to be optimised
+            $process->reindexEverything();
+            $this->response->appendContent(
+                sprintf(
+                    "%s index was rebuilt successfully",
+                    $process->getIndexer()->getName(),
+                    $this->_cleanMode($process->getMode())
+                ),
+                array('color' => array('green'))
+            );
+        }
+    }
+    
+    
+    /**
+     * Clean the raw mode value for display
+     *
+     * @param string $rawMode 
+     * @return string
+     * @author Alistair Stead
+     */
+    protected function _cleanMode($rawMode) {
+        switch ($rawMode) {
+            case Mage_Index_Model_Process::MODE_REAL_TIME:
+                $mode = 'Update on Save';
+                break;
+            case Mage_Index_Model_Process::MODE_MANUAL:
+                $mode = 'Manual Update';
+                break;
+        }
+        
+        return $mode;
+    }
+    
+    /**
+     * Clean the raw status for display
+     *
+     * @param string $rawStatus 
+     * @return string
+     * @author Alistair Stead
+     */
+    protected function _cleanStatus($rawStatus) {
+        switch ($rawStatus) {
+            case Mage_Index_Model_Process::STATUS_PENDING:
+                $status = 'Pending';
+                break;
+            case Mage_Index_Model_Process::STATUS_REQUIRE_REINDEX:
+                $status = 'Require Reindex';
+                break;
+
+            case Mage_Index_Model_Process::STATUS_RUNNING:
+                $status = 'Running';
+                break;
+            default:
+                $status = 'Ready';
+                break;
+        }
+        
+        return $status;
     }
     
     /**
@@ -76,6 +175,7 @@ class MageTool_Tool_MageApp_Provider_Core_Indexer extends MageTool_Tool_MageApp_
                 }
             }
         }
+        
         return $processes;
     }
     

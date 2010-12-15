@@ -6,9 +6,10 @@
 require_once 'MageTool/Tool/MageApp/Provider/Abstract.php';
 
 /**
- * undocumented class
+ * MageTool_Tool_MageApp_Provider_Core_Resource provides commands to obtain detail
+ * about the installed modules and to clear the internal registry of specific versions
  *
- * @package default
+ * @package MageTool_MageApp_Providor_Core
  * @author Alistair Stead
  **/
 class MageTool_Tool_MageApp_Provider_Core_Resource extends MageTool_Tool_MageApp_Provider_Abstract

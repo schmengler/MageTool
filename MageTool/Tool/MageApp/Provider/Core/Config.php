@@ -6,9 +6,10 @@
 require_once 'MageTool/Tool/MageApp/Provider/Abstract.php';
 
 /**
- * undocumented class
+ * MageTool_Tool_MageApp_Provider_Core_Config provides commands to read and update the Magento
+ * config from the cli
  *
- * @package default
+ * @package MageTool_MageApp_Providor_Core
  * @author Alistair Stead
  **/
 class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_Provider_Abstract

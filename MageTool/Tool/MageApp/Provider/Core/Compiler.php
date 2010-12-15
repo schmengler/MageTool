@@ -6,9 +6,9 @@
 require_once 'MageTool/Tool/MageApp/Provider/Abstract.php';
 
 /**
- * undocumented class
+ * MageTool_Tool_MageApp_Provider_Core_Compiler provides commands to interact with the Magento compiler
  *
- * @package default
+ * @package MageTool_MageApp_Providor_Core
  * @author Alistair Stead
  **/
 class MageTool_Tool_MageApp_Provider_Core_Compiler extends MageTool_Tool_MageApp_Provider_Abstract
