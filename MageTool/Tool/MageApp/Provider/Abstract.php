@@ -12,12 +12,12 @@ require_once 'Zend/Tool/Framework/Provider/Interface.php';
 require_once 'Zend/Tool/Framework/Registry/EnabledInterface.php';
 
 /**
- * undocumented class
+ * MageTool_MageApp_Providor_Abstract
  *
- * @package default
+ * @package MageTool_MageApp_Providor
  * @author Alistair Stead
  **/
-abstract class MageTool_Tool_MageApp_Provider_Abstract 
+abstract class MageTool_MageApp_Providor_Abstract
     implements Zend_Tool_Framework_Provider_Interface, Zend_Tool_Framework_Registry_EnabledInterface
 {
     /**

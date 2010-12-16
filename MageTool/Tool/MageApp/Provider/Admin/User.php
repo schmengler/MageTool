@@ -6,9 +6,9 @@
 require_once 'MageTool/Tool/MageApp/Provider/Abstract.php';
 
 /**
- * undocumented class
+ * MageTool_Tool_MageApp_Provider_Admin_User provides commands to show and create admin users for Magento
  *
- * @package default
+ * @package MageTool_MageApp_Providor_Admin
  * @author Alistair Stead
  **/
 class MageTool_Tool_MageApp_Provider_Admin_User extends MageTool_Tool_MageApp_Provider_Abstract
@@ -35,15 +35,11 @@ class MageTool_Tool_MageApp_Provider_Admin_User extends MageTool_Tool_MageApp_Pr
     {
         $this->_bootstrap();
         
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
-        
         $userCollection = $configs = Mage::getModel('admin/user')->getCollection();
         $userCollection->load();
 
         foreach($userCollection as $key => $user) {
-            $response->appendContent(
+            $this->response->appendContent(
                 "{$user->getUsername()} <{$user->getEmail()}>",
                 array('color' => array('white'))
                 );
@@ -59,12 +55,7 @@ class MageTool_Tool_MageApp_Provider_Admin_User extends MageTool_Tool_MageApp_Pr
     public function create($username, $email, $password, $firstname = 'Admin', $lastname = 'User')
     {
         $this->_bootstrap();
-        
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
-        
-        $response->appendContent(
+        $this->response->appendContent(
             "Creating Magento Admin User:",
             array('color' => array('yellow'))
             );

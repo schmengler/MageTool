@@ -36,10 +36,6 @@ class MageTool_Tool_MageApp_Provider_Core_Resource extends MageTool_Tool_MageApp
     {
         $this->_bootstrap();
         
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
-        
         $response->appendContent(
             'Magento Core Resource: [VERSION] [DATA_VERSION]',
             array('color' => array('yellow'))
@@ -56,7 +52,7 @@ class MageTool_Tool_MageApp_Provider_Core_Resource extends MageTool_Tool_MageApp
         $read->closeConnection();
 
         foreach($resourceCollection as $key => $resource) {
-            $response->appendContent(
+            $this->response->appendContent(
                 "{$resource['code']} [{$resource['version']}] [{$resource['data_version']}]",
                 array('color' => array('white'))
                 );
@@ -72,10 +68,6 @@ class MageTool_Tool_MageApp_Provider_Core_Resource extends MageTool_Tool_MageApp
     public function delete($code)
     {
         $this->_bootstrap();
-        
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
         
         $resTable = Mage::getSingleton('core/resource')->getTableName('core/resource');
         $write = Mage::getSingleton('core/resource')->getConnection('core_write');

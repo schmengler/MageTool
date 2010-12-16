@@ -42,7 +42,7 @@ class MageTool_Tool_MageApp_Provider_Core_Indexer extends MageTool_Tool_MageApp_
             $output .= $process->getIndexer()->getName();
             $output .= $this->_cleanStatus($process->getStatus());
             $output .= $this->_cleanMode($process->getMode());
-            $response->appendContent(
+            $this->response->appendContent(
                 $output,
                 array('color' => array('white'))
                 );

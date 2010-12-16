@@ -36,11 +36,7 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
     {
         $this->_bootstrap();
         
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
-        
-        $response->appendContent(
+        $this->response->appendContent(
             'Magento Config Data: $PATH [$SCOPE] = $VALUE',
             array('color' => array('yellow'))
             );
@@ -56,7 +52,7 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
         $configCollection->load();
 
         foreach($configs as $key => $config) {
-            $response->appendContent(
+            $this->response->appendContent(
                 "{$config->getPath()} [{$config->getScope()}] = {$config->getValue()}",
                 array('color' => array('white'))
                 );
@@ -73,11 +69,7 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
     {
         $this->_bootstrap();
         
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
-        
-        $response->appendContent(
+        $this->response->appendContent(
             'Magento Config updated to: $PATH [$SCOPE] = $VALUE',
             array('color' => array('yellow'))
             );
@@ -99,7 +91,7 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
                 $config->save();
             }  
 
-            $response->appendContent(
+            $this->response->appendContent(
                 "{$result} > {$config->getPath()} [{$config->getScope()}] = {$config->getValue()}",
                 array('color' => array('white'))
                 );
@@ -116,11 +108,7 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
     {
         $this->_bootstrap();
         
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
-        
-        $response->appendContent(
+        $this->response->appendContent(
             'Magento Config updated to: $PATH [$SCOPE] = $VALUE',
             array('color' => array('yellow'))
             );
@@ -146,7 +134,7 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
                     $config->save();
                 }  
 
-                $response->appendContent(
+                $this->response->appendContent(
                     "{$result} > {$config->getPath()} [{$config->getScope()}] = {$config->getValue()}",
                     array('color' => array('white'))
                     );

@@ -34,12 +34,10 @@ class MageTool_Tool_MageApp_Provider_Core_Compiler extends MageTool_Tool_MageApp
     public function run()
     {
         $this->_bootstrap();
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
+
         try {
             Mage::getModel('compiler/process')->run();
-            $response->appendContent(
+            $this->response->appendContent(
                 Mage::helper('compiler')->__('The compilation has completed.'),
                 array('color' => array('green'))
                 );
@@ -57,12 +55,10 @@ class MageTool_Tool_MageApp_Provider_Core_Compiler extends MageTool_Tool_MageApp
     public function clear()
     {
         $this->_bootstrap();
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
+
         try {
             Mage::getModel('compiler/process')->clear();
-            $response->appendContent(
+            $this->response->appendContent(
                 Mage::helper('compiler')->__('ompilation successfully cleared.'),
                 array('color' => array('green'))
                 );           
@@ -80,9 +76,6 @@ class MageTool_Tool_MageApp_Provider_Core_Compiler extends MageTool_Tool_MageApp
     public function enable()
     {
         $this->_bootstrap();
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
         
         if (Mage::getModel('compiler/process')->getCompiledFilesCount() == 0) {
             throw new Exception(Mage::helper('compiler')->__('Not Compiled! Please run zf run mage-core-compiler first.'));
@@ -90,7 +83,7 @@ class MageTool_Tool_MageApp_Provider_Core_Compiler extends MageTool_Tool_MageApp
         
         Mage::getModel('compiler/process')->registerIncludePath();
 
-        $response->appendContent(
+        $this->response->appendContent(
             Mage::helper('compiler')->__('Compiler include path is enabled.'),
             array('color' => array('green'))
             );
@@ -107,11 +100,7 @@ class MageTool_Tool_MageApp_Provider_Core_Compiler extends MageTool_Tool_MageApp
         $this->_bootstrap();
         Mage::getModel('compiler/process')->registerIncludePath(false);
         
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
-        
-        $response->appendContent(
+        $this->response->appendContent(
             Mage::helper('compiler')->__('Compiler include path is disabled.'),
             array('color' => array('green'))
             );
@@ -126,9 +115,6 @@ class MageTool_Tool_MageApp_Provider_Core_Compiler extends MageTool_Tool_MageApp
     public function stat()
     {
         $this->_bootstrap();
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
         
         $compilerConfig = './includes/config.php';
         if (file_exists($compilerConfig)) {
@@ -137,19 +123,19 @@ class MageTool_Tool_MageApp_Provider_Core_Compiler extends MageTool_Tool_MageApp
         $status = defined('COMPILER_INCLUDE_PATH') ? 'Enabled' : 'Disabled';
         $state  = Mage::getModel('compiler/process')->getCollectedFilesCount() > 0 ? 'Compiled' : 'Not Compiled';
 
-        $response->appendContent(
+        $this->response->appendContent(
             "Compiler Status:          " . $status,
             array('color' => array('green'))
             );
-        $response->appendContent(
+        $this->response->appendContent(
             "Compilation State:        " . $state,
             array('color' => array('green'))
             );
-        $response->appendContent(
+        $this->response->appendContent(
             "Collected Files Count:    " . Mage::getModel('compiler/process')->getCollectedFilesCount(),
             array('color' => array('green'))
             );
-        $response->appendContent(
+        $this->response->appendContent(
             "Compiled Scopes Count:    " . Mage::getModel('compiler/process')->getCompiledFilesCount(),
             array('color' => array('green'))
             );
