@@ -46,8 +46,7 @@ class MageTool_Tool_MageApp_Provider_Core_Indexer extends MageTool_Tool_MageApp_
                     $this->_cleanMode($process->getMode())
                 ),
                 array('color' => array('white'))
-                );
-            
+                ); 
         }
     }
     
@@ -90,6 +89,8 @@ class MageTool_Tool_MageApp_Provider_Core_Indexer extends MageTool_Tool_MageApp_
         
         foreach ($processes as $process) {
             // TODO this process needs to be optimised
+            // This is processed as a single transactional commit
+            // With multiple temporary tables
             $process->reindexEverything();
             $this->response->appendContent(
                 sprintf(
