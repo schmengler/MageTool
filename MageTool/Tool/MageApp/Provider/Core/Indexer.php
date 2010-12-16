@@ -37,13 +37,14 @@ class MageTool_Tool_MageApp_Provider_Core_Indexer extends MageTool_Tool_MageApp_
         $this->_bootstrap(); 
         $processes = $this->_parseIndexerString($code);
         foreach ($processes as $process) {
-            /* @var $process Mage_Index_Model_Process */
-            $output = sprintf('%-30s', $process->getIndexerCode());
-            $output .= $process->getIndexer()->getName();
-            $output .= $this->_cleanStatus($process->getStatus());
-            $output .= $this->_cleanMode($process->getMode());
             $this->response->appendContent(
-                $output,
+                sprintf(
+                    '%-30s %-25s %-15s %-20s', 
+                    $process->getIndexerCode(),
+                    $process->getIndexer()->getName(),
+                    $this->_cleanStatus($process->getStatus()),
+                    $this->_cleanMode($process->getMode())
+                ),
                 array('color' => array('white'))
                 );
             
@@ -73,7 +74,6 @@ class MageTool_Tool_MageApp_Provider_Core_Indexer extends MageTool_Tool_MageApp_
                 ),
                 array('color' => array('green'))
             );
-            
         }
     }
     
