@@ -11,7 +11,7 @@
     processIsolation="true"
     syntaxCheck="true"
     verbose="true">
-    <testsuite name="MageTool">
+    <testsuite name="Mage Tool Tests">
         <directory suffix="Test.php">tests</directory>
     </testsuite>
     
