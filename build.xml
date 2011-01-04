@@ -1,4 +1,4 @@
-<project name="MageTool" default="build" basedir=".">
+<project name="MageTool" default="build" basedir="../">
  <target name="clean">
   <!-- Clean up -->
   <delete dir="build"/>
