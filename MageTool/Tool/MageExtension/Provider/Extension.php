@@ -104,8 +104,9 @@ class MageTool_Tool_MageExtension_Provider_Extension extends MageTool_Tool_MageE
         $response->appendContent('Created extension at ' . $path, array('color' => 'green'));
         $response->appendContent('Note: ', array('separator' => true, 'color' => 'yellow'));
         $response->appendContent(
-            'This command created a new extension, '
-            . 'you will now need to create a config file to enable this module in app/etc/modules');
+        'This command created a new extension, 
+        you will now need to create a config file to enable this module in app/etc/modules'
+        );
         $response->appendContent('Example: ', array('separator' => true, 'color' => 'yellow'));
         $xmlExample = <<< EOS
 <?xml version="1.0"?>

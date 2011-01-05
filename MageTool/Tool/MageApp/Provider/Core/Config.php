@@ -44,10 +44,10 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
             
         $configCollection = $configs = Mage::getModel('core/config_data')->getCollection();
 
-        if(is_string($path)) {
+        if (is_string($path)) {
             $configCollection->addFieldToFilter('path', array("like" => "%$path%"));
         }
-        if(is_string($scope)) {
+        if (is_string($scope)) {
             $configCollection->addFieldToFilter('scope', array("eq" => $scope));
         }
         $configCollection->load();
@@ -78,7 +78,7 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
         $configCollection = Mage::getModel('core/config_data')->getCollection();
             
         $configCollection->addFieldToFilter('path', array("eq" => $path));
-        if(is_string($scope)) {
+        if (is_string($scope)) {
             $configCollection->addFieldToFilter('scope', array("eq" => $scope));
         }
         $configCollection->load();
@@ -116,16 +116,16 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
             
         $configCollection = $configs = Mage::getModel('core/config_data')->getCollection();
 
-        if(is_string($path)) {
+        if (is_string($path)) {
             $configCollection->addFieldToFilter('path', array("eq" => $path));
         }
-        if(is_string($scope)) {
+        if (is_string($scope)) {
             $configCollection->addFieldToFilter('scope', array("eq" => $scope));
         }
         $configCollection->load();
 
         foreach($configs as $key => $config) {
-            if(strstr($config->getvalue(), $match)) {
+            if (strstr($config->getvalue(), $match)) {
                 $config->setValue(str_replace($match, $value, $config->getvalue()));
                 
                 if ($this->_registry->getRequest()->isPretend()) {

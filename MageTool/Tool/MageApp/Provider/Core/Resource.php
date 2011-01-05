@@ -46,7 +46,7 @@ class MageTool_Tool_MageApp_Provider_Core_Resource extends MageTool_Tool_MageApp
         $read = Mage::getSingleton('core/resource')->getConnection('core_read');
         
         $select = $read->select()->from($resTable, array('code', 'version', 'data_version'));
-        if(is_string($code)) {
+        if (is_string($code)) {
             $select->where('code = ?', $code);
         }
         $resourceCollection = $read->fetchAll($select);

@@ -5,14 +5,15 @@
  */
 require_once 'Zend/Tool/Project/Context/Filesystem/File.php';
 
-abstract class MageTool_Tool_MageExtension_Context_Extension_AbstractFile extends Zend_Tool_Project_Context_Filesystem_File
+abstract class MageTool_Tool_MageExtension_Context_Extension_AbstractFile 
+    extends Zend_Tool_Project_Context_Filesystem_File
 {
 
     /**
      * @var string
      */
     protected $_className = 'ClassName';
-    
+
     /**
      * @var string
      */
@@ -24,7 +25,8 @@ abstract class MageTool_Tool_MageExtension_Context_Extension_AbstractFile extend
      */
     public function init()
     {
-        $this->_className = ($this->_resource->getAttribute('name'))? $this->_resource->getAttribute('name') : $this->_filesystemName;
+        $this->_className = ($this->_resource->getAttribute('name'))? 
+            $this->_resource->getAttribute('name') : $this->_filesystemName;
         $this->_filesystemName = ucfirst($this->_className) . '.php';
         parent::init();
     }
@@ -61,9 +63,9 @@ abstract class MageTool_Tool_MageExtension_Context_Extension_AbstractFile extend
         $profile = $this->_resource->getProfile();
         $vendor = $profile->getAttribute('vendor');
         $name = $profile->getAttribute('name');
-        
+
         $className = sprintf($this->getClassPath(), $vendor, $name, ucfirst($this->_className));
-        
+
         $codeGenFile = new Zend_CodeGenerator_Php_File(array(
             'fileName' => $this->getPath(),
             'classes' => array(
@@ -71,15 +73,15 @@ abstract class MageTool_Tool_MageExtension_Context_Extension_AbstractFile extend
                     'name' => $className,
                     'extendedClass' => $this->getExtends(),
                     'methods' => array()
-                	))
-            	)
-        	));
+                    ))
+                )
+            ));
 
         // store the generator into the registry so that the addAction command can use the same object later
         Zend_CodeGenerator_Php_File::registerFileCodeGenerator($codeGenFile); // REQUIRES filename to be set
         return $codeGenFile->generate();
     }
-    
+
     /**
      * Return a class path template for use with sprintf()
      *
@@ -87,7 +89,7 @@ abstract class MageTool_Tool_MageExtension_Context_Extension_AbstractFile extend
      * @author Alistair Stead
      **/
     abstract public function getClassPath();
-    
+
     /**
      * Return the class name that will be extended
      *
