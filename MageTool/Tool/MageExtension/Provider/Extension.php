@@ -5,6 +5,7 @@ require_once 'MageTool/Tool/MageExtension/Profile.php';
  */
 require_once 'MageTool/Tool/MageExtension/Provider/Abstract.php';
 require_once 'MageTool/Tool/MageExtension/Provider/Exception.php';
+require_once 'Zend/Tool/Framework/Provider/Pretendable.php';
 /**
  * undocumented class
  *

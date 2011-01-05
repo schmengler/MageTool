@@ -4,6 +4,7 @@
  * @see MageTool_Tool_MageApp_Provider_Abstract
  */
 require_once 'MageTool/Tool/MageApp/Provider/Abstract.php';
+require_once 'Zend/Tool/Framework/Provider/Pretendable.php';
 
 /**
  * MageTool_Tool_MageApp_Provider_App adds command that provide information about Magento
