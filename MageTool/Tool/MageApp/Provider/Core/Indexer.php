@@ -84,7 +84,8 @@ class MageTool_Tool_MageApp_Provider_Core_Indexer extends MageTool_Tool_MageApp_
      * @return void
      * @author Alistair Stead
      */
-    public function run($code = 'all') {
+    public function run($code = 'all')
+    {
         $this->_bootstrap();   
         $processes = $this->_parseIndexerString($code);
         
@@ -112,7 +113,8 @@ class MageTool_Tool_MageApp_Provider_Core_Indexer extends MageTool_Tool_MageApp_
      * @return string
      * @author Alistair Stead
      */
-    protected function _cleanMode($rawMode) {
+    protected function _cleanMode($rawMode)
+    {
         switch ($rawMode) {
             case Mage_Index_Model_Process::MODE_REAL_TIME:
                 $mode = 'Update on Save';
@@ -132,7 +134,8 @@ class MageTool_Tool_MageApp_Provider_Core_Indexer extends MageTool_Tool_MageApp_
      * @return string
      * @author Alistair Stead
      */
-    protected function _cleanStatus($rawStatus) {
+    protected function _cleanStatus($rawStatus)
+    {
         switch ($rawStatus) {
             case Mage_Index_Model_Process::STATUS_PENDING:
                 $status = 'Pending';
