@@ -39,8 +39,8 @@ class MageTool_Tool_MageApp_Provider_Core_Compiler extends MageTool_Tool_MageApp
         try {
             Mage::getModel('compiler/process')->run();
             $this->response->appendContent(
-            Mage::helper('compiler')->__('The compilation has completed.'),
-            array('color' => array('green'))
+                Mage::helper('compiler')->__('The compilation has completed.'),
+                array('color' => array('green'))
             );
         } catch (Mage_Core_Exception $e) {
             throw new Exception($e->getMessage());
@@ -60,9 +60,9 @@ class MageTool_Tool_MageApp_Provider_Core_Compiler extends MageTool_Tool_MageApp
         try {
             Mage::getModel('compiler/process')->clear();
             $this->response->appendContent(
-                    Mage::helper('compiler')->__('ompilation successfully cleared.'),
-                    array('color' => array('green'))
-                );           
+                Mage::helper('compiler')->__('ompilation successfully cleared.'),
+                array('color' => array('green'))
+            );           
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }
@@ -79,7 +79,9 @@ class MageTool_Tool_MageApp_Provider_Core_Compiler extends MageTool_Tool_MageApp
         $this->_bootstrap();
         
         if (Mage::getModel('compiler/process')->getCompiledFilesCount() == 0) {
-            throw new Exception(Mage::helper('compiler')->__('Not Compiled! Please run zf run mage-core-compiler first.'));
+            throw new Exception(
+                Mage::helper('compiler')->__('Not Compiled! Please run zf run mage-core-compiler first.')
+            );
         }
         
         Mage::getModel('compiler/process')->registerIncludePath();

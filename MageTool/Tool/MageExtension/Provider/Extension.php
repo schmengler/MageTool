@@ -12,7 +12,8 @@ require_once 'Zend/Tool/Framework/Provider/Pretendable.php';
  * @package default
  * @author Alistair Stead
  **/
-class MageTool_Tool_MageExtension_Provider_Extension extends MageTool_Tool_MageExtension_Provider_Abstract
+class MageTool_Tool_MageExtension_Provider_Extension 
+    extends MageTool_Tool_MageExtension_Provider_Abstract
     implements Zend_Tool_Framework_Provider_Pretendable
 {
     /**
@@ -67,15 +68,16 @@ class MageTool_Tool_MageExtension_Provider_Extension extends MageTool_Tool_MageE
 
         if (file_exists($path)) {
             throw new MageTool_Tool_MageExtension_Provider_Exception(
-                "An Extension {$this->name} already exists in the {$this->pool} code pool for the vendor {$this->vendor}."
-                );
+                "An Extension {$this->name} already exists in the {$this->pool} 
+                code pool for the vendor {$this->vendor}."
+            );
         } else {
             try {
                 mkdir($path, 0755, true);
             } catch (Exception $e) {
                 throw new MageTool_Tool_MageExtension_Provider_Exception(
                     "Unable to create Extension {$this->name} directory."
-                    );
+                );
             }
         }
 
@@ -90,11 +92,11 @@ class MageTool_Tool_MageExtension_Provider_Extension extends MageTool_Tool_MageE
         }
 
         $newProfile = new MageTool_Tool_MageExtension_Profile(array(
-            'projectDirectory' => $path,
-            'profileData' => $profileData,
-            'vendor' => $this->vendor,
-            'name' => $this->name,
-            'pool' => $this->pool
+                'projectDirectory' => $path,
+                'profileData' => $profileData,
+                'vendor' => $this->vendor,
+                'name' => $this->name,
+                'pool' => $this->pool
             ));
 
         $newProfile->loadFromData();
@@ -104,8 +106,8 @@ class MageTool_Tool_MageExtension_Provider_Extension extends MageTool_Tool_MageE
         $response->appendContent('Created extension at ' . $path, array('color' => 'green'));
         $response->appendContent('Note: ', array('separator' => true, 'color' => 'yellow'));
         $response->appendContent(
-        'This command created a new extension, 
-        you will now need to create a config file to enable this module in app/etc/modules'
+            'This command created a new extension, 
+            you will now need to create a config file to enable this module in app/etc/modules'
         );
         $response->appendContent('Example: ', array('separator' => true, 'color' => 'yellow'));
         $xmlExample = <<< EOS
