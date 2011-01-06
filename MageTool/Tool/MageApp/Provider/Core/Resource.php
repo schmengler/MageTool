@@ -40,7 +40,7 @@ class MageTool_Tool_MageApp_Provider_Core_Resource extends MageTool_Tool_MageApp
         $response->appendContent(
             'Magento Core Resource: [VERSION] [DATA_VERSION]',
             array('color' => array('yellow'))
-            );
+        );
             
         $resTable = Mage::getSingleton('core/resource')->getTableName('core/resource');
         $read = Mage::getSingleton('core/resource')->getConnection('core_read');
@@ -52,11 +52,11 @@ class MageTool_Tool_MageApp_Provider_Core_Resource extends MageTool_Tool_MageApp
         $resourceCollection = $read->fetchAll($select);
         $read->closeConnection();
 
-        foreach($resourceCollection as $key => $resource) {
+        foreach ($resourceCollection as $key => $resource) {
             $this->response->appendContent(
                 "{$resource['code']} [{$resource['version']}] [{$resource['data_version']}]",
                 array('color' => array('white'))
-                );
+            );
         }
     }
     

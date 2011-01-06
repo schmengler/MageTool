@@ -39,11 +39,11 @@ class MageTool_Tool_MageApp_Provider_Admin_User extends MageTool_Tool_MageApp_Pr
         $userCollection = $configs = Mage::getModel('admin/user')->getCollection();
         $userCollection->load();
 
-        foreach($userCollection as $key => $user) {
+        foreach ($userCollection as $key => $user) {
             $this->response->appendContent(
                 "{$user->getUsername()} <{$user->getEmail()}>",
                 array('color' => array('white'))
-                );
+            );
         }
     }
 
@@ -59,7 +59,7 @@ class MageTool_Tool_MageApp_Provider_Admin_User extends MageTool_Tool_MageApp_Pr
         $this->response->appendContent(
             "Creating Magento Admin User:",
             array('color' => array('yellow'))
-            );
+        );
 
         //create new user
         $user = Mage::getModel('admin/user')

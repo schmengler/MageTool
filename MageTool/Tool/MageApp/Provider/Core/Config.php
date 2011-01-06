@@ -40,7 +40,7 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
         $this->response->appendContent(
             'Magento Config Data: $PATH [$SCOPE] = $VALUE',
             array('color' => array('yellow'))
-            );
+        );
             
         $configCollection = $configs = Mage::getModel('core/config_data')->getCollection();
 
@@ -52,11 +52,11 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
         }
         $configCollection->load();
 
-        foreach($configs as $key => $config) {
+        foreach ($configs as $key => $config) {
             $this->response->appendContent(
                 "{$config->getPath()} [{$config->getScope()}] = {$config->getValue()}",
                 array('color' => array('white'))
-                );
+            );
         }
     }
     
@@ -66,14 +66,14 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
      * @return void
      * @author Alistair Stead
      **/
-    public function set($path, $scope = null, $value)
+    public function set($path, $value, $scope = null)
     {
         $this->_bootstrap();
         
         $this->response->appendContent(
             'Magento Config updated to: $PATH [$SCOPE] = $VALUE',
             array('color' => array('yellow'))
-            );
+        );
             
         $configCollection = Mage::getModel('core/config_data')->getCollection();
             
@@ -83,7 +83,7 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
         }
         $configCollection->load();
             
-        foreach($configCollection as $key => $config) {
+        foreach ($configCollection as $key => $config) {
             $config->setValue($value);
             if ($this->_registry->getRequest()->isPretend()) {
                 $result = "Dry run";
@@ -95,7 +95,7 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
             $this->response->appendContent(
                 "{$result} > {$config->getPath()} [{$config->getScope()}] = {$config->getValue()}",
                 array('color' => array('white'))
-                );
+            );
         }
     }
     
@@ -112,7 +112,7 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
         $this->response->appendContent(
             'Magento Config updated to: $PATH [$SCOPE] = $VALUE',
             array('color' => array('yellow'))
-            );
+        );
             
         $configCollection = $configs = Mage::getModel('core/config_data')->getCollection();
 
@@ -124,7 +124,7 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
         }
         $configCollection->load();
 
-        foreach($configs as $key => $config) {
+        foreach ($configs as $key => $config) {
             if (strstr($config->getvalue(), $match)) {
                 $config->setValue(str_replace($match, $value, $config->getvalue()));
                 
@@ -138,7 +138,7 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
                 $this->response->appendContent(
                     "{$result} > {$config->getPath()} [{$config->getScope()}] = {$config->getValue()}",
                     array('color' => array('white'))
-                    );
+                );
             }
         }
     }

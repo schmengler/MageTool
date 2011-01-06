@@ -63,7 +63,7 @@ class MageTool_Tool_MageApp_Provider_Core_Cache extends MageTool_Tool_MageApp_Pr
         $this->response->appendContent(
             'Magento Cache Cleared',
             array('color' => array('green'))
-            );
+        );
     }
     
     /**
@@ -91,7 +91,7 @@ class MageTool_Tool_MageApp_Provider_Core_Cache extends MageTool_Tool_MageApp_Pr
         $this->response->appendContent(
             'Magento Cache Enabled',
             array('color' => array('green'))
-            );
+        );
     }
     
     /**
@@ -120,6 +120,6 @@ class MageTool_Tool_MageApp_Provider_Core_Cache extends MageTool_Tool_MageApp_Pr
         $this->response->appendContent(
             'Magento Cache Disabled',
             array('color' => array('green'))
-            );
+        );
     }
 }
