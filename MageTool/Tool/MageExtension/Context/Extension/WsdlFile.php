@@ -6,7 +6,8 @@
 require_once 'Zend/Tool/Project/Context/Filesystem/File.php';
 
 
-class MageTool_Tool_MageExtension_Context_Extension_WsdlFile extends Zend_Tool_Project_Context_Filesystem_File
+class MageTool_Tool_MageExtension_Context_Extension_WsdlFile 
+    extends Zend_Tool_Project_Context_Filesystem_File
 {
 
     /**
@@ -41,12 +42,15 @@ class MageTool_Tool_MageExtension_Context_Extension_WsdlFile extends Zend_Tool_P
         return <<< EOS
 <?xml version="1.0"?>
 <!-- Remove this file if your module does not have profide an api -->
-<definitions xmlns:typens="urn:{{var wsdl.name}}" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/"
+<definitions xmlns:typens="urn:{{var wsdl.name}}" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/"
     name="{{var wsdl.name}}" targetNamespace="urn:{{var wsdl.name}}">
     <types>
         <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Magento">
-            <import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/" />
+            <import namespace="http://schemas.xmlsoap.org/soap/encoding/" 
+            schemaLocation="http://schemas.xmlsoap.org/soap/encoding/" />
         <!-- add complexType nodes here -->
         </schema>
     </types>
