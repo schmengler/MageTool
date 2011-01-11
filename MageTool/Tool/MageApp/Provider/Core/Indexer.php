@@ -54,6 +54,8 @@ class MageTool_Tool_MageApp_Provider_Core_Indexer extends MageTool_Tool_MageApp_
     /**
      * Update the mode of the index processor
      *
+     * @param string $mode manual | real_time
+     * @param string $code comma separated list of indexes to process
      * @return void
      * @author Alistair Stead
      **/
@@ -80,7 +82,7 @@ class MageTool_Tool_MageApp_Provider_Core_Indexer extends MageTool_Tool_MageApp_
     /**
      * Run the indexer and build the flat table indexes for Magento
      *
-     * @param string $code 
+     * @param string $code comma separated list of indexes to process
      * @return void
      * @author Alistair Stead
      */
@@ -90,9 +92,6 @@ class MageTool_Tool_MageApp_Provider_Core_Indexer extends MageTool_Tool_MageApp_
         $processes = $this->_parseIndexerString($code);
         
         foreach ($processes as $process) {
-            // TODO this process needs to be optimised
-            // This is processed as a single transactional commit
-            // With multiple temporary tables
             $process->reindexEverything();
             $this->response->appendContent(
                 sprintf(
