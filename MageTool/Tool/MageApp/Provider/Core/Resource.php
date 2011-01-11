@@ -53,7 +53,7 @@ class MageTool_Tool_MageApp_Provider_Core_Resource extends MageTool_Tool_MageApp
         $read->closeConnection();
 
         foreach ($resourceCollection as $key => $resource) {
-            $this->response->appendContent(
+            $this->_response->appendContent(
                 "{$resource['code']} [{$resource['version']}] [{$resource['data_version']}]",
                 array('color' => array('white'))
             );

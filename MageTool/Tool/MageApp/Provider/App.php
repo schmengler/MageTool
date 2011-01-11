@@ -37,7 +37,7 @@ class MageTool_Tool_MageApp_Provider_App extends MageTool_Tool_MageApp_Provider_
         $this->_bootstrap();
         
         $version = Mage::getVersion();        
-        $this->response->appendContent(
+        $this->_response->appendContent(
             'Magento Version: ' . $version,
             array('color' => array('yellow'))
             );

@@ -38,7 +38,7 @@ class MageTool_Tool_MageApp_Provider_Core_Indexer extends MageTool_Tool_MageApp_
         $this->_bootstrap(); 
         $processes = $this->_parseIndexerString($code);
         foreach ($processes as $process) {
-            $this->response->appendContent(
+            $this->_response->appendContent(
                 sprintf(
                     '%-30s %-25s %-15s %-20s', 
                     $process->getIndexerCode(),
@@ -68,7 +68,7 @@ class MageTool_Tool_MageApp_Provider_Core_Indexer extends MageTool_Tool_MageApp_
         }
         foreach ($processes as $process) {
             $process->setMode($mode)->save();
-            $this->response->appendContent(
+            $this->_response->appendContent(
                 sprintf(
                     "%s index was successfully changed index mode to %s",
                     $process->getIndexer()->getName(),
@@ -93,7 +93,7 @@ class MageTool_Tool_MageApp_Provider_Core_Indexer extends MageTool_Tool_MageApp_
         
         foreach ($processes as $process) {
             $process->reindexEverything();
-            $this->response->appendContent(
+            $this->_response->appendContent(
                 sprintf(
                     "%s index was rebuilt successfully",
                     $process->getIndexer()->getName(),

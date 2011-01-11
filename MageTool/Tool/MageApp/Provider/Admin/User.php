@@ -40,7 +40,7 @@ class MageTool_Tool_MageApp_Provider_Admin_User extends MageTool_Tool_MageApp_Pr
         $userCollection->load();
 
         foreach ($userCollection as $key => $user) {
-            $this->response->appendContent(
+            $this->_response->appendContent(
                 "{$user->getUsername()} <{$user->getEmail()}>",
                 array('color' => array('white'))
             );
@@ -56,7 +56,7 @@ class MageTool_Tool_MageApp_Provider_Admin_User extends MageTool_Tool_MageApp_Pr
     public function create($username, $email, $password, $firstname = 'Admin', $lastname = 'User')
     {
         $this->_bootstrap();
-        $this->response->appendContent(
+        $this->_response->appendContent(
             "Creating Magento Admin User:",
             array('color' => array('yellow'))
         );

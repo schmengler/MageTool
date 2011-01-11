@@ -30,14 +30,14 @@ abstract class MageTool_Tool_MageApp_Provider_Abstract
      *
      * @var Zend_Tool_Framework_Request
      **/
-    protected $request;
+    protected $_request;
     
     /**
      * Internal response object
      *
      * @var Zend_Tool_Framework_Response
      **/
-    protected $response;
+    protected $_response;
 
     /**
      * setRegistry() - required by Zend_Tool_Framework_Registry_EnabledInterface
@@ -66,8 +66,8 @@ abstract class MageTool_Tool_MageApp_Provider_Abstract
         Mage::app();
         
         // get request/response object
-        $this->request = $this->_registry->getRequest();
-        $this->response = $this->_registry->getResponse();
+        $this->_request = $this->_registry->getRequest();
+        $this->_response = $this->_registry->getResponse();
     }
     /**
      * Find the mage file and confirm Magento is installed
