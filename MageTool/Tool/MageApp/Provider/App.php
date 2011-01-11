@@ -4,11 +4,12 @@
  * @see MageTool_Tool_MageApp_Provider_Abstract
  */
 require_once 'MageTool/Tool/MageApp/Provider/Abstract.php';
+require_once 'Zend/Tool/Framework/Provider/Pretendable.php';
 
 /**
- * undocumented class
+ * MageTool_Tool_MageApp_Provider_App adds command that provide information about Magento
  *
- * @package default
+ * @package MageTool_MageApp_Providor
  * @author Alistair Stead
  **/
 class MageTool_Tool_MageApp_Provider_App extends MageTool_Tool_MageApp_Provider_Abstract 
@@ -35,13 +36,8 @@ class MageTool_Tool_MageApp_Provider_App extends MageTool_Tool_MageApp_Provider_
     {
         $this->_bootstrap();
         
-        $version = Mage::getVersion();
-        
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
-        
-        $response->appendContent(
+        $version = Mage::getVersion();        
+        $this->response->appendContent(
             'Magento Version: ' . $version,
             array('color' => array('yellow'))
             );

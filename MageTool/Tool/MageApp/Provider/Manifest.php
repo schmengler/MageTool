@@ -3,6 +3,7 @@
 require_once 'MageTool/Tool/MageApp/Provider/Admin/User.php';
 require_once 'MageTool/Tool/MageApp/Provider/Core/Cache.php';
 require_once 'MageTool/Tool/MageApp/Provider/Core/Compiler.php';
+require_once 'MageTool/Tool/MageApp/Provider/Core/Indexer.php';
 require_once 'MageTool/Tool/MageApp/Provider/Core/Resource.php';
 require_once 'MageTool/Tool/MageApp/Provider/Core/Config.php';
 require_once 'MageTool/Tool/MageApp/Provider/App.php';
@@ -21,6 +22,7 @@ class MageTool_Tool_MageApp_Provider_Manifest
             new MageTool_Tool_MageApp_Provider_Admin_User(),
             new MageTool_Tool_MageApp_Provider_Core_Cache(),
             new MageTool_Tool_MageApp_Provider_Core_Compiler(),
+            new MageTool_Tool_MageApp_Provider_Core_Indexer(),
             new MageTool_Tool_MageApp_Provider_Core_Resource(),
             new MageTool_Tool_MageApp_Provider_Core_Config(),
             new MageTool_Tool_MageApp_Provider_App(),

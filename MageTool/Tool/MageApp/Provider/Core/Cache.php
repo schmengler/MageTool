@@ -4,11 +4,13 @@
  * @see MageTool_Tool_Core_Provider_Abstract
  */
 require_once 'MageTool/Tool/MageApp/Provider/Abstract.php';
+require_once 'Zend/Tool/Framework/Provider/Pretendable.php';
 
 /**
- * undocumented class
+ * MageTool_Tool_MageApp_Provider_Core_Cache provides commands to clear the 
+ * Magento cache from the command line
  *
- * @package default
+ * @package MageTool_MageApp_Providor_Core
  * @author Alistair Stead
  **/
 class MageTool_Tool_MageApp_Provider_Core_Cache extends MageTool_Tool_MageApp_Provider_Abstract
@@ -57,16 +59,11 @@ class MageTool_Tool_MageApp_Provider_Core_Cache extends MageTool_Tool_MageApp_Pr
     {
         $this->_bootstrap();
         
-        Mage::app()->cleanCache();
-        
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
-        
-        $response->appendContent(
+        Mage::app()->cleanCache(); 
+        $this->response->appendContent(
             'Magento Cache Cleared',
             array('color' => array('green'))
-            );
+        );
     }
     
     /**
@@ -91,14 +88,10 @@ class MageTool_Tool_MageApp_Provider_Core_Cache extends MageTool_Tool_MageApp_Pr
             Mage::app()->saveUseCache($allTypes);
         }
         
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
-        
-        $response->appendContent(
+        $this->response->appendContent(
             'Magento Cache Enabled',
             array('color' => array('green'))
-            );
+        );
     }
     
     /**
@@ -124,13 +117,9 @@ class MageTool_Tool_MageApp_Provider_Core_Cache extends MageTool_Tool_MageApp_Pr
             Mage::app()->saveUseCache($allTypes);
         }
         
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
-        
-        $response->appendContent(
+        $this->response->appendContent(
             'Magento Cache Disabled',
             array('color' => array('green'))
-            );
+        );
     }
 }

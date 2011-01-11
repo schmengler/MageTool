@@ -1,5 +1,7 @@
 <?php
 
+require_once "Zend/Tool/Project/Profile/FileParser/Xml.php";
+
 class MageTool_Tool_MageExtension_Profile_FileParser_Xml extends Zend_Tool_Project_Profile_FileParser_Xml {
     
     /**
