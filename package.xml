@@ -26,7 +26,7 @@
   <release>beta</release>
   <api>beta</api>
  </stability>
- <license uri="http://www.opensource.org/licenses/mit-license.php">MIT</license>
+ <license uri="http://opensource.org/licenses/osl-3.0.php">OSL 3.0</license>
  <notes>
 Added new functionality to run the Magento compiler on the cmd line. You 
 Can also enable and disable the use of the compiled source.
