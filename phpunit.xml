@@ -8,7 +8,7 @@
     convertErrorsToExceptions="false"
     convertNoticesToExceptions="false"
     convertWarningsToExceptions="false"
-    processIsolation="true"
+    processIsolation="false"
     syntaxCheck="true"
     verbose="true">
     <testsuite name="Mage Tool Tests">
