@@ -25,7 +25,11 @@ class ConfigTest extends PHPUnit_Framework_TestCase
      */
     public function getNameShouldReturnString()
     {
-        $this->assertEquals( $this->extension->getName(), 'MageCoreConfig', 'The providor does not return the expected string name' );
+        $this->assertEquals(
+            $this->extension->getName(),
+            'MageCoreConfig',
+            'The providor does not return the expected string name'
+        );
     } // getNameShouldReturnString
     
 }

@@ -25,7 +25,11 @@ class ResourceTest extends PHPUnit_Framework_TestCase
      */
     public function getNameShouldReturnString()
     {
-        $this->assertEquals( $this->extension->getName(), 'MageCoreResource', 'The providor does not return the expected string name' );
+        $this->assertEquals(
+            $this->extension->getName(),
+            'MageCoreResource', 
+            'The providor does not return the expected string name'
+        );
     } // getNameShouldReturnString
     
 }

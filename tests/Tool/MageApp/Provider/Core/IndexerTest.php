@@ -25,7 +25,11 @@ class IndexerTest extends PHPUnit_Framework_TestCase
      */
     public function getNameShouldReturnString()
     {
-        $this->assertEquals( $this->extension->getName(), 'MageCoreIndexer', 'The providor does not return the expected string name' );
+        $this->assertEquals( 
+            $this->extension->getName(),
+            'MageCoreIndexer', 
+            'The providor does not return the expected string name'
+        );
     } // getNameShouldReturnString
     
 }
