@@ -63,6 +63,7 @@ abstract class MageTool_Tool_MageApp_Provider_Abstract
         $mageFilename = 'app/Mage.php';
         $this->_isInstalled($mageFilename);
         require_once $mageFilename;
+        Mage::setIsDeveloperMode(true);
         Mage::app();
         
         // get request/response object

@@ -39,7 +39,28 @@ class MageTool_Tool_MageApp_Provider_App extends MageTool_Tool_MageApp_Provider_
         $version = Mage::getVersion();        
         $this->_response->appendContent(
             'Magento Version: ' . $version,
-            array('color' => array('yellow'))
+            array('color' => array('green'))
+            );
+    }
+    
+    /**
+     * Dispatch a Magento event from the cli to allow testing
+     *
+     * @return void
+     * @author Alistair Stead
+     **/
+    public function dispatchEvent($name, $data = array())
+    {
+        $this->_bootstrap();
+        
+        $this->_response->appendContent(
+            "Dispatching event: {$name}",
+            array('color' => array('white'))
+            );
+        Mage::dispatchEvent($name, $data);
+        $this->_response->appendContent(
+            "Dispatched event: {$name}",
+            array('color' => array('green'))
             );
     }
 }
