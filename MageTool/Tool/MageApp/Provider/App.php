@@ -46,6 +46,7 @@ class MageTool_Tool_MageApp_Provider_App extends MageTool_Tool_MageApp_Provider_
     /**
      * Dispatch a Magento event from the cli to allow testing
      *
+     * @param string $name The name of the event to be dispatched
      * @return void
      * @author Alistair Stead
      **/
