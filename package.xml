@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.0     http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.0     http://pear.php.net/dtd/package-2.0.xsd">
  <name>MageTool</name>
  <channel>pear.magetool.co.uk</channel>
  <summary>Additional ZF tools specifically for use during Magento development.</summary>
@@ -16,8 +16,8 @@
   <email>tonigrigoriu@php.net</email>
   <active>yes</active>
  </contributor>
- <date>2010-12-13</date>
- <time>20:16:14</time>
+ <date>2011-01-21</date>
+ <time>14:59:29</time>
  <version>
   <release>0.2.0</release>
   <api>0.2.0</api>
@@ -36,36 +36,37 @@ Can also enable and disable the use of the compiled source.
    <file baseinstalldir="/" md5sum="c0be88a6418196ae42b76baebf709d0b" name="MageTool/Tool/MageApp/Exception.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
-   <file baseinstalldir="/" md5sum="b3826ce9d408ed48e9649ad74b63b89a" name="MageTool/Tool/MageApp/Provider/Abstract.php" role="php">
+   <file baseinstalldir="/" md5sum="408357cd66b8d6224284f1c471960715" name="MageTool/Tool/MageApp/Provider/Abstract.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
-   <file baseinstalldir="/" md5sum="10e99e154a726aa44278980d815baf8a" name="MageTool/Tool/MageApp/Provider/App.php" role="php">
+   <file baseinstalldir="/" md5sum="9ba7e70d3648a07da65e7738dc7b652d" name="MageTool/Tool/MageApp/Provider/App.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
    <file baseinstalldir="/" md5sum="f5a2e62ff0818806bba33b31a2f07c85" name="MageTool/Tool/MageApp/Provider/Exception.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
-   <file baseinstalldir="/" md5sum="b3a81227d729abf014136d8e8c9fd098" name="MageTool/Tool/MageApp/Provider/Manifest.php" role="php">
+   <file baseinstalldir="/" md5sum="8986fc4d29cbfe225ef886d7e387d96c" name="MageTool/Tool/MageApp/Provider/Manifest.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
-   <file baseinstalldir="/" md5sum="a19a14e22f68fd21976ccaeabee4ae01" name="MageTool/Tool/MageApp/Provider/Admin/User.php" role="php">
+   <file baseinstalldir="/" md5sum="91951279295f8e3bb1cb306beec3ebce" name="MageTool/Tool/MageApp/Provider/Admin/User.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
-   <file baseinstalldir="/" md5sum="031e141567336d927c0dee7c80859b9b" name="MageTool/Tool/MageApp/Provider/Core/Cache.php" role="php">
+   <file baseinstalldir="/" md5sum="7dc4346b8690a1e8e7ac4b1d29532f8b" name="MageTool/Tool/MageApp/Provider/Core/Cache.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
-   <file baseinstalldir="/" md5sum="a65c70c564945c8f457763f84ca031c2" name="MageTool/Tool/MageApp/Provider/Core/Compiler.php" role="php" />
-   <file baseinstalldir="/" md5sum="7da2b7165a019451438fbc9a9b7a0633" name="MageTool/Tool/MageApp/Provider/Core/Config.php" role="php">
+   <file baseinstalldir="/" md5sum="72b2b63b3a00aa46301cff7bccc33fef" name="MageTool/Tool/MageApp/Provider/Core/Compiler.php" role="php" />
+   <file baseinstalldir="/" md5sum="8d2960c8dd3c5c44ad9194cc27721ada" name="MageTool/Tool/MageApp/Provider/Core/Config.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
-   <file baseinstalldir="/" md5sum="0635cd2fb9b0cea561265023ca8a1c21" name="MageTool/Tool/MageApp/Provider/Core/Resource.php" role="php">
+   <file baseinstalldir="/" md5sum="0e2955094970057301b20e4b7e5be943" name="MageTool/Tool/MageApp/Provider/Core/Indexer.php" role="php" />
+   <file baseinstalldir="/" md5sum="2ea90ccd656fc018c694e69e825dcd84" name="MageTool/Tool/MageApp/Provider/Core/Resource.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
    <file baseinstalldir="/" md5sum="cd0319d016d8c11181c535dbc0a09bdc" name="MageTool/Tool/MageExtension/Exception.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
-   <file baseinstalldir="/" md5sum="f961cd25d27309dccee294201b15db09" name="MageTool/Tool/MageExtension/Profile.php" role="php" />
-   <file baseinstalldir="/" md5sum="6a7615e15431a4e455793551f68608e0" name="MageTool/Tool/MageExtension/Context/Extension/AbstractFile.php" role="php" />
+   <file baseinstalldir="/" md5sum="f412b4b42bfbb8414f1f26875de39719" name="MageTool/Tool/MageExtension/Profile.php" role="php" />
+   <file baseinstalldir="/" md5sum="1949c22ed94a64887d2916972bcc1731" name="MageTool/Tool/MageExtension/Context/Extension/AbstractFile.php" role="php" />
    <file baseinstalldir="/" md5sum="9ac975b7b2a4a2bc4a6e3c4e542035cb" name="MageTool/Tool/MageExtension/Context/Extension/AdminhtmlFile.php" role="php" />
    <file baseinstalldir="/" md5sum="4c87d0179badd34ac7d1f5b8b3940e90" name="MageTool/Tool/MageExtension/Context/Extension/ApiFile.php" role="php" />
    <file baseinstalldir="/" md5sum="6bb35fe0925a0bde22a0b88ba55720de" name="MageTool/Tool/MageExtension/Context/Extension/BlockDirectory.php" role="php" />
@@ -84,30 +85,21 @@ Can also enable and disable the use of the compiled source.
    <file baseinstalldir="/" md5sum="481fa01c848402452d9163291cf0c6ce" name="MageTool/Tool/MageExtension/Context/Extension/SetupFile.php" role="php" />
    <file baseinstalldir="/" md5sum="4c12eda5975d28bb7791be18434ab54d" name="MageTool/Tool/MageExtension/Context/Extension/SqlDirectory.php" role="php" />
    <file baseinstalldir="/" md5sum="f3381876a14adf0baef528b91e8df77b" name="MageTool/Tool/MageExtension/Context/Extension/SystemFile.php" role="php" />
-   <file baseinstalldir="/" md5sum="008f7c2db9940054dde3e4b7efd0666d" name="MageTool/Tool/MageExtension/Context/Extension/WsdlFile.php" role="php" />
-   <file baseinstalldir="/" md5sum="210c00c0b0cb741b5cd43a9748f49cb3" name="MageTool/Tool/MageExtension/Profile/FileParser/Xml.php" role="php" />
-   <file baseinstalldir="/" md5sum="2a031f41e4a3d5cd1b5415c500eb2aa1" name="MageTool/Tool/MageExtension/Provider/Abstract.php" role="php">
+   <file baseinstalldir="/" md5sum="2b74af4f7739ebb303d97c330291219b" name="MageTool/Tool/MageExtension/Context/Extension/WsdlFile.php" role="php" />
+   <file baseinstalldir="/" md5sum="ded57aa089f2a0d92adbd77cd4dc38b9" name="MageTool/Tool/MageExtension/Profile/FileParser/Xml.php" role="php" />
+   <file baseinstalldir="/" md5sum="8fdc754d634f4190ca3849f1cb516d4a" name="MageTool/Tool/MageExtension/Provider/Abstract.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
    <file baseinstalldir="/" md5sum="34981377ff764c5325b1f3fe0448ab67" name="MageTool/Tool/MageExtension/Provider/Exception.php" role="php" />
-   <file baseinstalldir="/" md5sum="3e55e5e10c55394189bb23e748b0c777" name="MageTool/Tool/MageExtension/Provider/Extension.php" role="php">
+   <file baseinstalldir="/" md5sum="3875371a54441a7b6c0d857217b74714" name="MageTool/Tool/MageExtension/Provider/Extension.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
    <file baseinstalldir="/" md5sum="fc025f65da0d170e1b849f391839bab3" name="MageTool/Tool/MageExtension/Provider/Manifest.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
-   <file baseinstalldir="/" md5sum="827289824e3d775591b8c7a35b1a6bc6" name="MageTool/Tool/MageTheme/Exception.php" role="php" />
-   <file baseinstalldir="/" md5sum="a460255c62c76712a75de3c83be064d0" name="MageTool/Tool/MageTheme/Profile.php" role="php" />
-   <file baseinstalldir="/" md5sum="f54f2fef297898e4f5fbcf161a487c18" name="MageTool/Tool/MageTheme/Profile/Theme.php" role="php" />
-   <file baseinstalldir="/" md5sum="65f7d72527b8e6c921102537a32e29fe" name="MageTool/Tool/MageTheme/Providor/Abstract.php" role="php" />
-   <file baseinstalldir="/" md5sum="f5a27478701d942a1ab62993fa53b0b7" name="MageTool/Tool/MageTheme/Providor/Exception.php" role="php" />
-   <file baseinstalldir="/" md5sum="6595c2032035d29bb5e831b1715f8f64" name="MageTool/Tool/MageTheme/Providor/Manifest.php" role="php" />
-   <file baseinstalldir="/" md5sum="c0e231148fda3c4726208f5b2db1a546" name="MageTool/Tool/MageTheme/Providor/Package.php" role="php" />
-   <file baseinstalldir="/" md5sum="501cc53e7f71207ecd01e2537e78157c" name="MageTool/Tool/MageTheme/Providor/Theme.php" role="php" />
-   <file baseinstalldir="/" md5sum="30b7d79088dbb500b8ede9384032669a" name="MageTool/Tool/Provider/Abstract.php" role="php" />
+   <file baseinstalldir="/" md5sum="0b43cf54885fb25a395eecfe6e2c3f03" name="MageTool/Tool/Provider/Abstract.php" role="php" />
    <file baseinstalldir="/" md5sum="61e1075895b9e1c7b0dae17273e8eee6" name="MageTool/Tool/Provider/Exception.php" role="php" />
    <file baseinstalldir="/" md5sum="37a3506cdc422d9114f3535f89022d24" name="LICENSE" role="doc" />
-   <file baseinstalldir="/" md5sum="ad0208033b7a317c417504ad50ebd19f" name="README.markdown" role="doc" />
   </dir>
  </contents>
  <dependencies>
@@ -166,8 +158,8 @@ Added the extension tasks.
     <release>beta</release>
     <api>beta</api>
    </stability>
-   <date>2010-12-13</date>
-   <license uri="http://www.opensource.org/licenses/mit-license.php">MIT</license>
+   <date>2011-01-21</date>
+   <license uri="http://opensource.org/licenses/osl-3.0.php">OSL 3.0</license>
    <notes>
 Added new functionality to run the Magento compiler on the cmd line. You 
 Can also enable and disable the use of the compiled source.
