@@ -79,6 +79,7 @@ class MageTool_Tool_MageApp_Provider_Core_Resource extends MageTool_Tool_MageApp
     /**
      * Delete a core resource
      *
+     * @param string $code The resource identification code to match
      * @return void
      * @author Alistair Stead
      **/
@@ -111,6 +112,7 @@ class MageTool_Tool_MageApp_Provider_Core_Resource extends MageTool_Tool_MageApp
     /**
      * Run the setup class for the supplied resource
      *
+     * @param string $module The name of the module you wish to run the update for
      * @return void
      * @author Alistair Stead
      **/
