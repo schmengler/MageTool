@@ -13,13 +13,15 @@ require_once 'Zend/Tool/Project/Provider/Abstract.php';
  * @package default
  * @author Alistair Stead
  **/
-abstract class MageTool_Tool_MageExtension_Provider_Abstract extends Zend_Tool_Project_Provider_Abstract
+abstract class MageTool_Tool_MageExtension_Provider_Abstract 
+    extends Zend_Tool_Project_Provider_Abstract
 {
     public function initialize()
     {
         $contextRegistry = Zend_Tool_Project_Context_Repository::getInstance();
         $contextRegistry->addContextsFromDirectory(
-            dirname(dirname(__FILE__)) . '/Context/Extension/', 'MageTool_Tool_MageExtension_Context_Extension_'
+            dirname(dirname(__FILE__)) . '/Context/Extension/', 
+            'MageTool_Tool_MageExtension_Context_Extension_'
         );
         
         parent::initialize();
@@ -47,7 +49,8 @@ abstract class MageTool_Tool_MageExtension_Provider_Abstract extends Zend_Tool_P
     protected function _isInstalled($mageFilename)
     {
         if (!file_exists($mageFilename)) {
-            throw new MageTool_Tool_Provider_Exception('The mage.php file can not be located. You must run this command within a Magento project.');
+            throw new MageTool_Tool_Provider_Exception('The mage.php file can not be located. 
+            You must run this command within a Magento project.');
         }
         
         return true;

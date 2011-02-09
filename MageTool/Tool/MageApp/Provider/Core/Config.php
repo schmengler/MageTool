@@ -4,11 +4,13 @@
  * @see MageTool_Tool_Core_Provider_Abstract
  */
 require_once 'MageTool/Tool/MageApp/Provider/Abstract.php';
+require_once 'Zend/Tool/Framework/Provider/Pretendable.php';
 
 /**
- * undocumented class
+ * MageTool_Tool_MageApp_Provider_Core_Config provides commands to read and update the Magento
+ * config from the cli
  *
- * @package default
+ * @package MageTool_MageApp_Providor_Core
  * @author Alistair Stead
  **/
 class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_Provider_Abstract
@@ -35,30 +37,26 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
     {
         $this->_bootstrap();
         
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
-        
-        $response->appendContent(
+        $this->_response->appendContent(
             'Magento Config Data: $PATH [$SCOPE] = $VALUE',
             array('color' => array('yellow'))
-            );
+        );
             
         $configCollection = $configs = Mage::getModel('core/config_data')->getCollection();
 
-        if(is_string($path)) {
+        if (is_string($path)) {
             $configCollection->addFieldToFilter('path', array("like" => "%$path%"));
         }
-        if(is_string($scope)) {
+        if (is_string($scope)) {
             $configCollection->addFieldToFilter('scope', array("eq" => $scope));
         }
         $configCollection->load();
 
-        foreach($configs as $key => $config) {
-            $response->appendContent(
+        foreach ($configs as $key => $config) {
+            $this->_response->appendContent(
                 "{$config->getPath()} [{$config->getScope()}] = {$config->getValue()}",
                 array('color' => array('white'))
-                );
+            );
         }
     }
     
@@ -68,28 +66,24 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
      * @return void
      * @author Alistair Stead
      **/
-    public function set($path, $scope = null, $value)
+    public function set($path, $value, $scope = null)
     {
         $this->_bootstrap();
         
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
-        
-        $response->appendContent(
+        $this->_response->appendContent(
             'Magento Config updated to: $PATH [$SCOPE] = $VALUE',
             array('color' => array('yellow'))
-            );
+        );
             
         $configCollection = Mage::getModel('core/config_data')->getCollection();
             
         $configCollection->addFieldToFilter('path', array("eq" => $path));
-        if(is_string($scope)) {
+        if (is_string($scope)) {
             $configCollection->addFieldToFilter('scope', array("eq" => $scope));
         }
         $configCollection->load();
             
-        foreach($configCollection as $key => $config) {
+        foreach ($configCollection as $key => $config) {
             $config->setValue($value);
             if ($this->_registry->getRequest()->isPretend()) {
                 $result = "Dry run";
@@ -98,10 +92,10 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
                 $config->save();
             }  
 
-            $response->appendContent(
+            $this->_response->appendContent(
                 "{$result} > {$config->getPath()} [{$config->getScope()}] = {$config->getValue()}",
                 array('color' => array('white'))
-                );
+            );
         }
     }
     
@@ -115,27 +109,23 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
     {
         $this->_bootstrap();
         
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
-        
-        $response->appendContent(
+        $this->_response->appendContent(
             'Magento Config updated to: $PATH [$SCOPE] = $VALUE',
             array('color' => array('yellow'))
-            );
+        );
             
         $configCollection = $configs = Mage::getModel('core/config_data')->getCollection();
 
-        if(is_string($path)) {
+        if (is_string($path)) {
             $configCollection->addFieldToFilter('path', array("eq" => $path));
         }
-        if(is_string($scope)) {
+        if (is_string($scope)) {
             $configCollection->addFieldToFilter('scope', array("eq" => $scope));
         }
         $configCollection->load();
 
-        foreach($configs as $key => $config) {
-            if(strstr($config->getvalue(), $match)) {
+        foreach ($configs as $key => $config) {
+            if (strstr($config->getvalue(), $match)) {
                 $config->setValue(str_replace($match, $value, $config->getvalue()));
                 
                 if ($this->_registry->getRequest()->isPretend()) {
@@ -145,10 +135,10 @@ class MageTool_Tool_MageApp_Provider_Core_Config extends MageTool_Tool_MageApp_P
                     $config->save();
                 }  
 
-                $response->appendContent(
+                $this->_response->appendContent(
                     "{$result} > {$config->getPath()} [{$config->getScope()}] = {$config->getValue()}",
                     array('color' => array('white'))
-                    );
+                );
             }
         }
     }

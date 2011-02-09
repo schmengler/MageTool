@@ -59,7 +59,8 @@ abstract class MageTool_Tool_Provider_Abstract
     protected function _isInstalled($mageFilename)
     {
         if (!file_exists($mageFilename)) {
-            throw new MageTool_Tool_Provider_Exception('The mage.php file can not be located. You must run this command within a Magento project.');
+            throw new MageTool_Tool_Provider_Exception('The mage.php file can not be located. 
+            You must run this command within a Magento project.');
         }
         
         return true;

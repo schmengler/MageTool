@@ -4,11 +4,13 @@
  * @see MageTool_Tool_Core_Provider_Abstract
  */
 require_once 'MageTool/Tool/MageApp/Provider/Abstract.php';
+require_once 'Zend/Tool/Framework/Provider/Pretendable.php';
 
 /**
- * undocumented class
+ * MageTool_Tool_MageApp_Provider_Core_Cache provides commands to clear the 
+ * Magento cache from the command line
  *
- * @package default
+ * @package MageTool_MageApp_Providor_Core
  * @author Alistair Stead
  **/
 class MageTool_Tool_MageApp_Provider_Core_Cache extends MageTool_Tool_MageApp_Provider_Abstract
@@ -50,32 +52,44 @@ class MageTool_Tool_MageApp_Provider_Core_Cache extends MageTool_Tool_MageApp_Pr
     /**
      * Clear the magento cache
      *
+     * @param string $tags comma separated list of tags to be cleared
      * @return void
      * @author Alistair Stead
      **/
-    public function clear()
+    public function clear($tags = 'all')
     {
         $this->_bootstrap();
         
-        Mage::app()->cleanCache();
-        
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
-        
-        $response->appendContent(
-            'Magento Cache Cleared',
+        $this->_getCache()->clean($this->_parseTagsString($tags));
+        $this->_response->appendContent(
+            'Magento Cache Cleaned for tags',
             array('color' => array('green'))
-            );
+        );
+    }
+    
+    /**
+     * Flush the cache storage
+     *
+     * @return void
+     * @author Alistair Stead
+     **/
+    public function flush()
+    {
+        $this->_getCache()->flush();
+        $this->_response->appendContent(
+            'Magento Cache Flushed',
+            array('color' => array('green'))
+        );
     }
     
     /**
      * Enable the Magento cache
      *
+     * @param string $tags comma separated list of tags to be enabled
      * @return void
      * @author Alistair Stead
      **/
-    public function enable()
+    public function enable($tags = 'all')
     {
         $this->_bootstrap();
         $allTypes = Mage::app()->useCache();
@@ -91,23 +105,20 @@ class MageTool_Tool_MageApp_Provider_Core_Cache extends MageTool_Tool_MageApp_Pr
             Mage::app()->saveUseCache($allTypes);
         }
         
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
-        
-        $response->appendContent(
+        $this->_response->appendContent(
             'Magento Cache Enabled',
             array('color' => array('green'))
-            );
+        );
     }
     
     /**
      * Disable the Magento cache
      *
+     * @param string $tags comma separated list of tags to be disabled
      * @return void
      * @author Alistair Stead
      **/
-    public function disable()
+    public function disable($tags = 'all')
     {
         $this->_bootstrap();
         $allTypes = Mage::app()->useCache();
@@ -124,13 +135,36 @@ class MageTool_Tool_MageApp_Provider_Core_Cache extends MageTool_Tool_MageApp_Pr
             Mage::app()->saveUseCache($allTypes);
         }
         
-        // get request/response object
-        $request = $this->_registry->getRequest();
-        $response = $this->_registry->getResponse();
-        
-        $response->appendContent(
+        $this->_response->appendContent(
             'Magento Cache Disabled',
             array('color' => array('green'))
-            );
+        );
+    }
+    
+    /**
+     * Retreive the cache object from App
+     *
+     * @return Zend_Cache
+     * @author Alistair Stead
+     **/
+    protected function _getCache()
+    {
+        return Mage::app()->getCacheInstance();
+    }
+    
+    /**
+     * Parse string with tags and return array of tags
+     *
+     * @param string $string
+     * @return array
+     */
+    protected function _parseTagsString($string)
+    {
+        $tags = array();
+        if (!$string == 'all') {
+            $tags = explode(',', $string);
+        }
+        
+        return $tags;
     }
 }
