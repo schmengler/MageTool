@@ -16,11 +16,11 @@
   <email>tonigrigoriu@php.net</email>
   <active>yes</active>
  </contributor>
- <date>2011-01-21</date>
- <time>14:59:29</time>
+ <date>2011-02-09</date>
+ <time>01:58:13</time>
  <version>
-  <release>0.2.0</release>
-  <api>0.2.0</api>
+  <release>0.3.0</release>
+  <api>0.3.0</api>
  </version>
  <stability>
   <release>beta</release>
@@ -28,18 +28,19 @@
  </stability>
  <license uri="http://opensource.org/licenses/osl-3.0.php">OSL 3.0</license>
  <notes>
-Added new functionality to run the Magento compiler on the cmd line. You 
-Can also enable and disable the use of the compiled source.
+Added feedack when running mage-core-resource commands
+Added functionality to dispatch events from the command line
+Added functionality to run the specific resource setup from the command line
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <file baseinstalldir="/" md5sum="c0be88a6418196ae42b76baebf709d0b" name="MageTool/Tool/MageApp/Exception.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
-   <file baseinstalldir="/" md5sum="408357cd66b8d6224284f1c471960715" name="MageTool/Tool/MageApp/Provider/Abstract.php" role="php">
+   <file baseinstalldir="/" md5sum="f0f8d6239a03a6ad13ca62e2f38ca588" name="MageTool/Tool/MageApp/Provider/Abstract.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
-   <file baseinstalldir="/" md5sum="9ba7e70d3648a07da65e7738dc7b652d" name="MageTool/Tool/MageApp/Provider/App.php" role="php">
+   <file baseinstalldir="/" md5sum="53c5ad74da8dd9a2bcc3ce404a1459d3" name="MageTool/Tool/MageApp/Provider/App.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
    <file baseinstalldir="/" md5sum="f5a2e62ff0818806bba33b31a2f07c85" name="MageTool/Tool/MageApp/Provider/Exception.php" role="php">
@@ -59,7 +60,7 @@ Can also enable and disable the use of the compiled source.
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
    <file baseinstalldir="/" md5sum="0e2955094970057301b20e4b7e5be943" name="MageTool/Tool/MageApp/Provider/Core/Indexer.php" role="php" />
-   <file baseinstalldir="/" md5sum="2ea90ccd656fc018c694e69e825dcd84" name="MageTool/Tool/MageApp/Provider/Core/Resource.php" role="php">
+   <file baseinstalldir="/" md5sum="e85a57577e835cfa4e6d9c2dd549af83" name="MageTool/Tool/MageApp/Provider/Core/Resource.php" role="php">
     <tasks:replace from="@package_version@" to="version" type="package-info" />
    </file>
    <file baseinstalldir="/" md5sum="cd0319d016d8c11181c535dbc0a09bdc" name="MageTool/Tool/MageExtension/Exception.php" role="php">
@@ -99,7 +100,6 @@ Can also enable and disable the use of the compiled source.
    </file>
    <file baseinstalldir="/" md5sum="0b43cf54885fb25a395eecfe6e2c3f03" name="MageTool/Tool/Provider/Abstract.php" role="php" />
    <file baseinstalldir="/" md5sum="61e1075895b9e1c7b0dae17273e8eee6" name="MageTool/Tool/Provider/Exception.php" role="php" />
-   <file baseinstalldir="/" md5sum="37a3506cdc422d9114f3535f89022d24" name="LICENSE" role="doc" />
   </dir>
  </contents>
  <dependencies>
@@ -163,6 +163,23 @@ Added the extension tasks.
    <notes>
 Added new functionality to run the Magento compiler on the cmd line. You 
 Can also enable and disable the use of the compiled source.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.3.0</release>
+    <api>0.3.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2011-02-09</date>
+   <license uri="http://opensource.org/licenses/osl-3.0.php">OSL 3.0</license>
+   <notes>
+Added feedack when running mage-core-resource commands
+Added functionality to dispatch events from the command line
+Added functionality to run the specific resource setup from the command line
    </notes>
   </release>
  </changelog>
