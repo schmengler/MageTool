@@ -44,7 +44,10 @@ class MageTool_Tool_MageApp_Provider_App extends MageTool_Tool_MageApp_Provider_
     }
     
     /**
-     * Dispatch a Magento event from the cli to allow testing
+     * Dispatch a Magento event from the cli to allow testing.
+     * 
+     * This can be used to test the observers configuration only. The data object
+     * will not be correctly constructed.
      *
      * @param string $name The name of the event to be dispatched
      * @return void
