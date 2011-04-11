@@ -51,16 +51,23 @@ class MageTool_Tool_MageExtension_Context_Extension_ConfigFile extends Zend_Tool
     <global>
         <models>
             <{$xmlName}>
+                <class>{$vendor}_{$name}_Model</class>
+                <resourceModel>{$xmlName}_entity</resourceModel>
             </{$xmlName}>
             <{$xmlName}_entity>
+                <class>{$vendor}_{$name}_Model_Entity</class>
+                <entities>
+                </entities>
             </{$xmlName}_entity>
         </models>
         <blocks>
             <{$xmlName}>
+                <class>{$vendor}_{$name}_Block</class>
             </{$xmlName}>
         </blocks>
         <helpers>
             <{$xmlName}>
+                <class>{$vendor}_{$name}_Helper</class>
             </{$xmlName}>
         </helpers>
         <resources>
