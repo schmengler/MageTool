@@ -88,6 +88,7 @@ class MageTool_Tool_MageExtension_Context_Extension_InstallFile extends Zend_Too
         $pool = $profile->getAttribute('pool');
 
         $content = '<?php
+/* @var $installer ' . "{$vendor}_{$name}_Model_Entity_Setup" . ' */
 $installer = $this;
 $installer->startSetup();
 
