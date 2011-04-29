@@ -99,6 +99,13 @@ class MageTool_Tool_MageExtension_Context_Extension_ConfigFile extends Zend_Tool
         <{$xmlName}>
         </{$xmlName}>
     </default>
+    <phpunit>
+        <suite>
+            <modules>
+                 <{$vendor}_{$name} />
+            </modules>
+        </suite>
+    </phpunit>
 </config>
 EOS;
     }
